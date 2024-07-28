@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export const App = () => {
 	const [activeIndex, setActiveIndex] = useState(1);
-	const steps = data;
+	// const steps = data;
 
 	const forwardClick = () => {
 		setActiveIndex(activeIndex => ++activeIndex);
@@ -22,7 +22,7 @@ export const App = () => {
 	};
 
 	const lastStep = () => {
-		if (activeIndex === steps.length) {
+		if (activeIndex === data.length) {
 			return true;
 		} else {
 			return false;
@@ -48,12 +48,12 @@ export const App = () => {
 				<h1>Инструкция по готовке пельменей</h1>
 				<div className={styles.steps}>
 					<div className={styles['steps-content']}>
-						{steps.map((step, index) =>
+						{data.map((step, index) =>
 							activeIndex === index + 1 ? step.content : ' '
 						)}
 					</div>
 					<ul className={styles['steps-list']}>
-						{steps.map((step, index) => (
+						{data.map((step, index) => (
 							<li
 								className={
 									activeIndex > index + 1
