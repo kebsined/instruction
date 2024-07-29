@@ -7,30 +7,26 @@ export const App = () => {
 
 	const forwardClick = () => {
 		setActiveIndex(activeIndex => ++activeIndex);
-		console.log(activeIndex);
 	};
 
 	const backClick = () => {
 		setActiveIndex(activeIndex => --activeIndex);
-		console.log(activeIndex);
 	};
 
 	const beginClick = () => {
 		setActiveIndex(1);
-		console.log(activeIndex);
 	};
 
 	const lastStep = () => {
-		return activeIndex === data.length ? true : false;
+		return activeIndex === data.length;
 	};
 
 	const firstStep = () => {
-		return activeIndex === 1 ? true : false;
+		return activeIndex === 1;
 	};
 
 	const toGetActive = index => {
 		setActiveIndex(index + 1);
-		console.log(activeIndex);
 	};
 
 	return (
@@ -46,13 +42,9 @@ export const App = () => {
 					<ul className={styles['steps-list']}>
 						{data.map((step, index) => (
 							<li
-								className={
-									activeIndex > index + 1
-										? styles['steps-item'] + ' ' + styles.done
-										: styles['steps-item'] && activeIndex === index + 1
-										? styles['steps-item'] + ' ' + styles.active
-										: styles['steps-item']
-								}
+								className={`${styles['steps-item']} ${
+									activeIndex > index + 1 && styles.done
+								} ${activeIndex === index + 1 && styles.active}`}
 								key={step.id}
 							>
 								<button
@@ -68,7 +60,7 @@ export const App = () => {
 					<div className={styles['buttons-container']}>
 						<button
 							className={styles.button}
-							disabled={firstStep() ? true : false}
+							disabled={firstStep()}
 							onClick={backClick}
 						>
 							Назад
