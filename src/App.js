@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 export const App = () => {
 	const [activeIndex, setActiveIndex] = useState(1);
-	// const steps = data;
 
 	const forwardClick = () => {
 		setActiveIndex(activeIndex => ++activeIndex);
@@ -22,19 +21,11 @@ export const App = () => {
 	};
 
 	const lastStep = () => {
-		if (activeIndex === data.length) {
-			return true;
-		} else {
-			return false;
-		}
+		return activeIndex === data.length ? true : false;
 	};
 
 	const firstStep = () => {
-		if (activeIndex === 1) {
-			return true;
-		} else {
-			return false;
-		}
+		return activeIndex === 1 ? true : false;
 	};
 
 	const toGetActive = index => {
@@ -80,13 +71,13 @@ export const App = () => {
 							disabled={firstStep() ? true : false}
 							onClick={backClick}
 						>
-							НАЗАД
+							Назад
 						</button>
 						<button
 							className={styles.button}
 							onClick={lastStep() ? beginClick : forwardClick}
 						>
-							{lastStep() ? 'НАЧАТЬ СНАЧАЛА' : 'ДАЛЕЕ'}
+							{lastStep() ? 'Начать с начала' : 'Далее'}
 						</button>
 					</div>
 				</div>
